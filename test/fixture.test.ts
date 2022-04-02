@@ -13,8 +13,9 @@ describe('fixture', async() => {
     // throw new Error('test error')
 
     const res = await transform(code, id, root, id => id, { takeover: true })
-    console.log(res)
-    expect(typeof res).toBe('string')
+    const codeMod = res!.s.toString()
+    console.log(codeMod)
+    expect(typeof codeMod).toBe('string')
 
     expect(1).toBe(1)
 
