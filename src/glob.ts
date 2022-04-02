@@ -6,6 +6,11 @@ export async function toAbsoluteGlob(
   dirname: string,
   resolveId: (id: string) => string | Promise<string>,
 ): Promise<string> {
+  console.log('vvvtoAbsoluteGlob')
+  console.log('glob: '+glob)
+  console.log('root: '+glob)
+  console.log('dirname: '+glob)
+  console.log('^^^toAbsoluteGlob')
   let pre = ''
   if (glob.startsWith('!')) {
     pre = '!'

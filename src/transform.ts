@@ -43,6 +43,7 @@ export async function transform(
     matches.map(async({ globsResolved, isRelative, options, index, start, end }) => {
       const cwd = getCommonBase(globsResolved) ?? root
       console.log('globsResolved: '+ globsResolved)
+      console.log('root: '+ cwd)
       console.log('cwd: '+ cwd)
       const files = (await fg(globsResolved, {
         cwd,
