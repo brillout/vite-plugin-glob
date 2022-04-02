@@ -42,6 +42,8 @@ export async function transform(
   const staticImports = (await Promise.all(
     matches.map(async({ globsResolved, isRelative, options, index, start, end }) => {
       const cwd = getCommonBase(globsResolved) ?? root
+      console.log('globsResolved: '+ globsResolved)
+      console.log('cwd: '+ cwd)
       const files = (await fg(globsResolved, {
         cwd,
         absolute: true,
@@ -52,6 +54,7 @@ export async function transform(
       }))
         .filter(file => file !== id)
         .sort()
+      console.log('files: '+ files)
 
       const objectProps: string[] = []
       const staticImports: string[] = []
