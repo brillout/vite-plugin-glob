@@ -8,8 +8,8 @@ export async function toAbsoluteGlob(
 ): Promise<string> {
   console.log('vvvtoAbsoluteGlob')
   console.log('glob: '+glob)
-  console.log('root: '+glob)
-  console.log('dirname: '+glob)
+  console.log('root: '+root)
+  console.log('dirname: '+dirname)
   console.log('^^^toAbsoluteGlob')
   let pre = ''
   if (glob.startsWith('!')) {
