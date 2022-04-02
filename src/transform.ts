@@ -4,7 +4,7 @@ import fg from 'fast-glob'
 import { stringifyQuery } from 'ufo'
 import type { PluginOptions } from '../types'
 import { parseImportGlob } from './parse'
-import { assert, getCommonBase, isCSSRequest } from './utils'
+import { getCommonBase, isCSSRequest } from './utils'
 
 const importPrefix = '__vite_glob_next_'
 
@@ -74,10 +74,8 @@ export async function transform(
         query = `?${query}`
 
       const resolvePaths = (file: string) => {
-        assert(file.startsWith('/'))
 
         let importPath = relative(dir, file)
-        assert(!importPath.startsWith('/'))
         if (!importPath.startsWith('.'))
           importPath = `./${importPath}`
 
@@ -87,7 +85,6 @@ export async function transform(
         }
         else {
           filePath = relative(root, file)
-          assert(!filePath.startsWith('/'))
           if (!filePath.startsWith('.'))
             filePath = `/${filePath}`
         }
