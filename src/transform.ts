@@ -1,4 +1,4 @@
-import { basename, posix } from 'path'
+import { basename, dirname, posix } from 'path'
 import MagicString from 'magic-string'
 import fg from 'fast-glob'
 import { stringifyQuery } from 'ufo'
@@ -8,7 +8,7 @@ import { assert, getCommonBase, isCSSRequest } from './utils'
 
 const importPrefix = '__vite_glob_next_'
 
-const { dirname, relative, join } = posix
+const { relative, join } = posix
 
 export async function transform(
   code: string,

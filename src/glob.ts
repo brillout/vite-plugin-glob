@@ -6,11 +6,7 @@ export async function toAbsoluteGlob(
   dirname: string,
   resolveId: (id: string) => string | Promise<string>,
 ): Promise<string> {
-  console.log('vvvtoAbsoluteGlob')
-  console.log('glob: '+glob)
-  console.log('root: '+root)
-  console.log('dirname: '+dirname)
-  console.log('^^^toAbsoluteGlob')
+  const globAbsolute = await (async () => {
   let pre = ''
   if (glob.startsWith('!')) {
     pre = '!'
@@ -29,6 +25,13 @@ export async function toAbsoluteGlob(
   const resolved = await resolveId(glob)
   if (resolved.startsWith('/'))
     return pre + resolved
-
   throw new Error(`Invalid glob: ${glob}. It must starts with '/' or './'`)
+  })()
+  console.log('vvvtoAbsoluteGlob')
+  console.log('glob: '+glob)
+  console.log('root: '+root)
+  console.log('dirname: '+dirname)
+  console.log('globAbsolute: '+globAbsolute)
+  console.log('^^^toAbsoluteGlob')
+  return globAbsolute
 }
