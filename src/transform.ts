@@ -95,7 +95,7 @@ export async function transform(
       }
 
       files.forEach((file, i) => {
-        console.log('file: ')
+        console.log('file: '+file)
         const paths = resolvePaths(file)
         const filePath = paths.filePath
         console.log('filePath: '+filePath)
