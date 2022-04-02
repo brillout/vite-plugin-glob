@@ -10,6 +10,8 @@ describe('fixture', async() => {
     const code = (await transformWithEsbuild(await fs.readFile(id, 'utf-8'), id)).code
     const root = process.cwd()
 
+    throw new Error('test error')
+
     expect((await transform(code, id, root, id => id, { takeover: true }))?.s.toString())
       .toMatchInlineSnapshot(`
         "import * as __vite_glob_next_1_0 from \\"./modules/a.ts\\"
