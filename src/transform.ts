@@ -41,21 +41,25 @@ export async function transform(
 
   const staticImports = (await Promise.all(
     matches.map(async({ globsResolved, isRelative, options, index, start, end }) => {
-      const cwd = getCommonBase(globsResolved) ?? root
-      console.log('globsResolved: '+ globsResolved)
-      console.log('root: '+ cwd)
-      console.log('cwd: '+ cwd)
+      let cwd = getCommonBase(globsResolved) ?? root
+      cwd = cwd.split('\\').join('/')
+      globsResolved = globsResolved.map(g => g.split('\\').join('/'))
+      const ignore = options.exhaustive
+          ? []
+          : [join(cwd, '**/node_modules/**')];
       const files = (await fg(globsResolved, {
         cwd,
         absolute: true,
         dot: !!options.exhaustive,
-        ignore: options.exhaustive
-          ? []
-          : [join(cwd, '**/node_modules/**')],
+        ignore,
       }))
         .filter(file => file !== id)
         .sort()
-      console.log('files: '+ files)
+      console.log('root: '+ cwd)
+      console.log('globsResolved: '+ globsResolved)
+      console.log('cwd: '+ cwd)
+      console.log('ignore: '+ cwd)
+      console.log('files: '+ JSON.stringify(files))
 
       const objectProps: string[] = []
       const staticImports: string[] = []

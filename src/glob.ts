@@ -27,11 +27,13 @@ export async function toAbsoluteGlob(
     return pre + resolved
   throw new Error(`Invalid glob: ${glob}. It must starts with '/' or './'`)
   })()
+  /*
   console.log('vvvtoAbsoluteGlob')
   console.log('glob: '+glob)
   console.log('root: '+root)
   console.log('dirname: '+dirname)
   console.log('globAbsolute: '+globAbsolute)
   console.log('^^^toAbsoluteGlob')
+  */
   return globAbsolute
 }
