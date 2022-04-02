@@ -19,8 +19,8 @@ describe('fixture', async() => {
 
     expect(1).toBe(1)
 
-    /*
-    expect((res)?.s.toString())
+    //*
+    expect(codeMod)
       .toMatchInlineSnapshot(`
         "import * as __vite_glob_next_1_0 from \\"./modules/a.ts\\"
         import * as __vite_glob_next_1_1 from \\"./modules/b.ts\\"
@@ -88,6 +88,6 @@ describe('fixture', async() => {
         };
         "
       `)
-      */
+      //*/
   })
 })
