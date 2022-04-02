@@ -100,8 +100,8 @@ export async function transform(
         const filePath = paths.filePath
         console.log('filePath: '+filePath)
         console.log('isRelative: '+isRelative)
-        console.log('dir: '+filePath)
-        console.log('root: '+filePath)
+        console.log('dir: '+dir)
+        console.log('root: '+root)
         let importPath = paths.importPath
         let importQuery = query
 
