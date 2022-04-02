@@ -14,12 +14,12 @@ describe('fixture', async() => {
 
     const res = await transform(code, id, root, id => id, { takeover: true })
     const codeMod = res!.s.toString()
-    console.log(codeMod)
+    // console.log(codeMod)
     expect(typeof codeMod).toBe('string')
 
     expect(1).toBe(1)
 
-    //*
+    /*
     expect(codeMod)
       .toMatchInlineSnapshot(`
         "import * as __vite_glob_next_1_0 from \\"./modules/a.ts\\"

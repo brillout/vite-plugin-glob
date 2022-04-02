@@ -55,11 +55,13 @@ export async function transform(
       }))
         .filter(file => file !== id)
         .sort()
+      /*
       console.log('root: '+ cwd)
       console.log('globsResolved: '+ globsResolved)
       console.log('cwd: '+ cwd)
       console.log('ignore: '+ cwd)
       console.log('files: '+ JSON.stringify(files))
+      */
 
       const objectProps: string[] = []
       const staticImports: string[] = []
@@ -93,8 +95,13 @@ export async function transform(
       }
 
       files.forEach((file, i) => {
+        console.log('file: ')
         const paths = resolvePaths(file)
         const filePath = paths.filePath
+        console.log('filePath: '+filePath)
+        console.log('isRelative: '+isRelative)
+        console.log('dir: '+filePath)
+        console.log('root: '+filePath)
         let importPath = paths.importPath
         let importQuery = query
 
