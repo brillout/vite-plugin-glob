@@ -1,4 +1,4 @@
-import { basename, dirname, posix } from 'path'
+import { posix } from 'path'
 import MagicString from 'magic-string'
 import fg from 'fast-glob'
 import { stringifyQuery } from 'ufo'
@@ -8,7 +8,9 @@ import { getCommonBase, isCSSRequest } from './utils'
 
 const importPrefix = '__vite_glob_next_'
 
-const { relative, join } = posix
+const { basename, dirname, relative, join } = posix
+
+const toPosixPath = (p: string) => p.split('\\').join('/')
 
 export async function transform(
   code: string,
@@ -17,6 +19,8 @@ export async function transform(
   resolveId: (id: string) => Promise<string> | string,
   options?: PluginOptions,
 ) {
+  id = toPosixPath(id)
+  root = toPosixPath(root)
   const dir = dirname(id)
   let matches = await parseImportGlob(code, dir, root, resolveId)
 
